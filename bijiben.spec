@@ -44,6 +44,8 @@ Bijiben is an attempt to design an intuitive note editor with strong
 desktop integration.
 
 %description -l pl.UTF-8
+Bijiben to próba zaprojektowania intuicyjnego edytora notatek znacząco
+zintegrowanego z pulpitem.
 
 %prep
 %setup -q
