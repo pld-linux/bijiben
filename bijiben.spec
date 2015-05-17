@@ -1,12 +1,12 @@
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	3.16.1
+Version:	3.16.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	f08f87770a6878a76d7f87fbf1d459e8
+# Source0-md5:	1007b9feddde8a2bcd04c08079b486bd
 URL:		https://wiki.gnome.org/Apps/Bijiben
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -81,13 +81,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %glib_compile_schemas
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %update_mime_database
 
 %postun
 %glib_compile_schemas
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %update_mime_database
 
@@ -102,6 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.gnome.Bijiben.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.bijiben.gschema.xml
 %{_datadir}/gnome-shell/search-providers/bijiben-search-provider.ini
-%{_iconsdir}/HighContrast/scalable/apps/bijiben.svg
-%{_iconsdir}/hicolor/*/apps/bijiben.png
+%{_iconsdir}/hicolor/*x*/apps/bijiben.png
+%{_iconsdir}/hicolor/scalable/apps/bijiben-symbolic.svg
 %{_datadir}/mime/packages/bijiben.xml
