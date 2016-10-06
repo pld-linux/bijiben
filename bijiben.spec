@@ -1,12 +1,12 @@
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	3.18.2
+Version:	3.20.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	66f45dfe887239a56cc707457bf3a303
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.20/%{name}-%{version}.tar.xz
+# Source0-md5:	1d5d71dffbf6fd28f8b43e1fa2484c07
 URL:		https://wiki.gnome.org/Apps/Bijiben
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
@@ -96,11 +96,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/bijiben
 %attr(755,root,root) %{_libexecdir}/bijiben-shell-search-provider
 %{_datadir}/bijiben
-%{_datadir}/appdata/bijiben.appdata.xml
-%{_desktopdir}/bijiben.desktop
-%{_datadir}/dbus-1/services/org.gnome.Bijiben.SearchProvider.service
+%{_datadir}/appdata/org.gnome.bijiben.appdata.xml
+%{_desktopdir}/org.gnome.bijiben.desktop
+%{_datadir}/dbus-1/services/org.gnome.bijiben.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.bijiben.gschema.xml
-%{_datadir}/gnome-shell/search-providers/bijiben-search-provider.ini
-%{_iconsdir}/hicolor/*x*/apps/bijiben.png
-%{_iconsdir}/hicolor/scalable/apps/bijiben-symbolic.svg
-%{_datadir}/mime/packages/bijiben.xml
+%{_datadir}/gnome-shell/search-providers/org.gnome.bijiben-search-provider.ini
+%{_iconsdir}/hicolor/*x*/apps/org.gnome.bijiben.png
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.bijiben-symbolic.svg
+%{_datadir}/mime/packages/org.gnome.bijiben.xml
