@@ -15,7 +15,6 @@ BuildRequires:	clutter-gtk-devel
 BuildRequires:	evolution-data-server-devel >= 3.13.90
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.28
-BuildRequires:	gnome-common
 BuildRequires:	gnome-online-accounts-devel
 BuildRequires:	gtk+3-devel >= 3.11.4
 BuildRequires:	gtk-webkit3-devel
