@@ -1,0 +1,19 @@
+--- bijiben-3.24.0/src/libbiji/provider/biji-memo-provider.c.orig	2017-05-25 02:15:49.000000000 +0200
++++ bijiben-3.24.0/src/libbiji/provider/biji-memo-provider.c	2017-07-16 08:59:26.097205197 +0200
+@@ -25,6 +25,7 @@
+  */
+ 
+ 
++#include <inttypes.h>
+ #include <libecal/libecal.h>        /* ECalClient      */
+ #include <libgd/gd.h>               /* Embed in frame  */
+ 
+@@ -200,7 +201,7 @@
+ 
+     create_note_from_item (item);
+     /* debug pour tracker. Il faut en plus datasource->urn */
+-    g_debug ("created=%li", item->set.created);
++    g_debug ("created=%"PRIi64, item->set.created);
+     g_debug ("title=%s", item->set.title);
+     g_debug ("url=%s", item->set.url);
+     g_debug ("content=%s\n================\n\n\n", item->set.content);

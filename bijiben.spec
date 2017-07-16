@@ -1,12 +1,14 @@
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	3.20.2
+Version:	3.24.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	1d5d71dffbf6fd28f8b43e1fa2484c07
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	9f7b891cc4f64ef862e60b08c1b2c69d
+Patch0:		%{name}-types.patch
+Patch1:		%{name}-localedir.patch
 URL:		https://wiki.gnome.org/Apps/Bijiben
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
@@ -17,10 +19,10 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.28
 BuildRequires:	gnome-online-accounts-devel
 BuildRequires:	gtk+3-devel >= 3.11.4
-BuildRequires:	gtk-webkit3-devel
+BuildRequires:	gtk-webkit4-devel >= 2.10.0
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libxml2-devel >= 2.0
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libuuid-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.592
@@ -36,6 +38,7 @@ Requires(post,postun):	shared-mime-info
 Requires:	evolution-data-server >= 3.13.90
 Requires:	glib2 >= 1:2.28
 Requires:	gtk+3 >= 3.11.4
+Requires:	gtk-webkit4 >= 2.10.0
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info
 Requires:	tracker-libs >= 1.0
@@ -51,9 +54,8 @@ zintegrowanego z pulpitem.
 
 %prep
 %setup -q
-
-# outdated macro
-%{__sed} -i -e '/^GNOME_DOC_PREPARE/d' configure.ac
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
