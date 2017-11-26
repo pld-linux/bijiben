@@ -1,0 +1,11 @@
+--- bijiben-3.26.0/configure.ac~	2017-09-12 00:29:30.000000000 +0200
++++ bijiben-3.26.0/configure.ac	2017-11-26 14:36:48.387156229 +0100
+@@ -64,7 +64,7 @@
+ WEBKITGTK_REQUIRED_VERSION=2.10.0
+ 
+ 
+-PKG_CHECK_MODULES([TRACKER], [tracker-sparql-1.0], [sparql_version="tracker-sparql-1.0"],
++PKG_CHECK_MODULES([TRACKER], [tracker-sparql-2.0], [sparql_version="tracker-sparql-2.0"],
+    [PKG_CHECK_MODULES([TRACKER], [tracker-sparql-0.18], [sparql_version="tracker-sparql-0.18"])
+ ])
+ 
