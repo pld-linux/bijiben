@@ -1,12 +1,12 @@
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	3.28.0
+Version:	3.30.3
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.28/%{name}-%{version}.tar.xz
-# Source0-md5:	55ac14002be56e037d7309e2d424924c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.30/%{name}-%{version}.tar.xz
+# Source0-md5:	5bea00a03622b23319c953b46625e0a5
 URL:		https://wiki.gnome.org/Apps/Bijiben
 BuildRequires:	appstream-glib-devel
 BuildRequires:	clutter-gtk-devel
