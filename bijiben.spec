@@ -1,16 +1,16 @@
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	3.30.3
-Release:	2
+Version:	3.34.1
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.30/%{name}-%{version}.tar.xz
-# Source0-md5:	5bea00a03622b23319c953b46625e0a5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.34/%{name}-%{version}.tar.xz
+# Source0-md5:	ea5beb01a33350400e58cf1e38b45040
 URL:		https://wiki.gnome.org/Apps/Bijiben
 BuildRequires:	appstream-glib-devel
 BuildRequires:	clutter-gtk-devel
-BuildRequires:	evolution-data-server-devel >= 3.13.90
+BuildRequires:	evolution-data-server-devel >= 3.33.2
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-online-accounts-devel
@@ -19,24 +19,25 @@ BuildRequires:	gtk-webkit4-devel >= 2.10.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libuuid-devel
 BuildRequires:	meson >= 0.43.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	tracker-devel >= 1.0
+BuildRequires:	tracker-devel >= 2.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 BuildRequires:	zeitgeist-devel >= 0.9
-Requires(post,postun):	glib2 >= 1:2.28
+Requires(post,postun):	glib2 >= 1:2.54.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	shared-mime-info
-Requires:	evolution-data-server >= 3.13.90
+Requires:	evolution-data-server >= 3.33.2
 Requires:	glib2 >= 1:2.54.0
 Requires:	gtk+3 >= 3.20.0
 Requires:	gtk-webkit4 >= 2.10.0
 Requires:	hicolor-icon-theme
 Requires:	shared-mime-info
-Requires:	tracker-libs >= 1.0
+Requires:	tracker-libs >= 2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,13 +52,16 @@ zintegrowanego z pulpitem.
 %setup -q
 
 %build
-%meson build
-%meson_build -C build
+%meson build \
+	-Dupdate_mimedb=false \
+	-Dzeitgeist=true
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%meson_install -C build
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
 
@@ -76,16 +80,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README.md TODO
 %attr(755,root,root) %{_bindir}/bijiben
 %attr(755,root,root) %{_libexecdir}/bijiben-shell-search-provider
 %{_datadir}/bijiben
-%{_datadir}/metainfo/org.gnome.bijiben.appdata.xml
-%{_desktopdir}/org.gnome.bijiben.desktop
-%{_datadir}/dbus-1/services/org.gnome.bijiben.SearchProvider.service
-%{_datadir}/glib-2.0/schemas/org.gnome.bijiben.gschema.xml
+%{_datadir}/dbus-1/services/org.gnome.Notes.SearchProvider.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Notes.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.bijiben.enums.xml
-%{_datadir}/gnome-shell/search-providers/org.gnome.bijiben-search-provider.ini
-%{_iconsdir}/hicolor/*x*/apps/org.gnome.bijiben.png
-%{_iconsdir}/hicolor/scalable/apps/org.gnome.bijiben-symbolic.svg
-%{_datadir}/mime/packages/org.gnome.bijiben.xml
+%{_datadir}/gnome-shell/search-providers/org.gnome.Notes-search-provider.ini
+%{_datadir}/metainfo/org.gnome.Notes.appdata.xml
+%{_datadir}/mime/packages/org.gnome.Notes.xml
+%{_desktopdir}/org.gnome.Notes.desktop
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Notes.svg
+%{_iconsdir}/hicolor/symbolic/apps/org.gnome.Notes-symbolic.svg
