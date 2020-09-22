@@ -1,21 +1,23 @@
+#
+# Conditional build:
+%bcond_without	zeitgeist	# Zeitgeist support
+
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	3.36.3
+Version:	3.38.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	34830c327e8547299df434e640cdcc76
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/bijiben/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	ab30cf476d73b01902b8629992217233
 URL:		https://wiki.gnome.org/Apps/Bijiben
-BuildRequires:	appstream-glib-devel
-BuildRequires:	clutter-gtk-devel
 BuildRequires:	evolution-data-server-devel >= 3.33.2
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-online-accounts-devel
 BuildRequires:	gtk+3-devel >= 3.20.0
-BuildRequires:	gtk-webkit4-devel >= 2.10.0
+BuildRequires:	gtk-webkit4-devel >= 2.26
 BuildRequires:	libhandy-devel >= 0.0.10
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libuuid-devel
@@ -24,21 +26,21 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	tracker-devel >= 2.0
+BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-BuildRequires:	zeitgeist-devel >= 0.9
+%{?with_zeitgeist:BuildRequires:	zeitgeist-devel >= 0.9}
 Requires(post,postun):	glib2 >= 1:2.54.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	shared-mime-info
 Requires:	evolution-data-server >= 3.33.2
 Requires:	glib2 >= 1:2.54.0
 Requires:	gtk+3 >= 3.20.0
-Requires:	gtk-webkit4 >= 2.10.0
+Requires:	gtk-webkit4 >= 2.26
 Requires:	hicolor-icon-theme
 Requires:	libhandy >= 0.0.10
 Requires:	shared-mime-info
-Requires:	tracker-libs >= 2.0
+Requires:	tracker3-libs >= 3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -55,7 +57,7 @@ zintegrowanego z pulpitem.
 %build
 %meson build \
 	-Dupdate_mimedb=false \
-	-Dzeitgeist=true
+	%{?with_zeitgeist:-Dzeitgeist=true}
 
 %ninja_build -C build
 
@@ -87,7 +89,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/bijiben
 %{_datadir}/dbus-1/services/org.gnome.Notes.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Notes.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.bijiben.enums.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Notes-search-provider.ini
 %{_datadir}/metainfo/org.gnome.Notes.appdata.xml
 %{_datadir}/mime/packages/org.gnome.Notes.xml
