@@ -1,0 +1,28 @@
+--- bijiben-40.1/data/meson.build.orig	2021-04-30 13:59:10.261303400 +0200
++++ bijiben-40.1/data/meson.build	2023-05-30 22:29:24.066598907 +0200
+@@ -4,7 +4,6 @@ subdir('appdata')
+ mime = 'org.gnome.Notes.xml'
+ 
+ i18n.merge_file(
+-  mime,
+   input: mime + '.in',
+   output: mime,
+   po_dir: po_dir,
+@@ -18,7 +17,6 @@ desktop_conf = configuration_data()
+ desktop_conf.set ('icon', application_id)
+ 
+ i18n.merge_file(
+-  desktop,
+   type: 'desktop',
+   input: configure_file(
+     input: files (desktop + '.in'),
+--- bijiben-40.1/data/appdata/meson.build.orig	2021-04-30 13:59:10.258303400 +0200
++++ bijiben-40.1/data/appdata/meson.build	2023-05-30 22:28:34.223535597 +0200
+@@ -1,7 +1,6 @@
+ info = 'org.gnome.Notes.appdata.xml'
+ 
+ i18n.merge_file(
+-  info,
+   input: info + '.in',
+   output: info,
+   po_dir: po_dir,
