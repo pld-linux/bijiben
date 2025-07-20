@@ -2,7 +2,7 @@ Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
 Version:	40.1
-Release:	5
+Release:	6
 License:	GPL v3+
 Group:		X11/Applications/Editors
 Source0:	https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz
@@ -23,7 +23,7 @@ BuildRequires:	libuuid-devel
 BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	xz
