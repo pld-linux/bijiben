@@ -1,13 +1,12 @@
 Summary:	Bijiben - notes editor
 Summary(pl.UTF-8):	Bijiben - edytor notatek
 Name:		bijiben
-Version:	40.1
-Release:	6
+Version:	40.2
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Editors
 Source0:	https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz
-# Source0-md5:	86731a4110b07667fe5d8953a11e411d
-Patch0:		%{name}-meson.patch
+# Source0-md5:	ffb1d8694a9e01ad026faddcc69b969a
 URL:		https://wiki.gnome.org/Apps/Bijiben
 BuildRequires:	curl-devel
 BuildRequires:	evolution-data-server-devel >= 3.33.2
@@ -15,7 +14,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-online-accounts-devel
 BuildRequires:	gtk+3-devel >= 3.20.0
-BuildRequires:	gtk-webkit4-devel >= 2.26
+BuildRequires:	gtk-webkit4.1-devel >= 2.26
 BuildRequires:	json-glib-devel
 BuildRequires:	libhandy1-devel >= 1.0.0
 BuildRequires:	libxml2-devel >= 2.0
@@ -34,7 +33,7 @@ Requires(post,postun):	shared-mime-info
 Requires:	evolution-data-server >= 3.33.2
 Requires:	glib2 >= 1:2.54.0
 Requires:	gtk+3 >= 3.20.0
-Requires:	gtk-webkit4 >= 2.26
+Requires:	gtk-webkit4.1 >= 2.26
 Requires:	hicolor-icon-theme
 Requires:	libhandy1 >= 1.0.0
 Requires:	shared-mime-info
@@ -51,7 +50,6 @@ zintegrowanego z pulpitem.
 
 %prep
 %setup -q
-%patch -P0 -p1
 
 %build
 %meson \
